@@ -1,0 +1,44 @@
+---
+title: "Project1"
+author: "Mason Souza"
+date: "2026-04-01"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Part 1
+
+```{r}
+#Read directly from GitHub
+
+democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
+```
+
+## Context
+
+-   The context of the data is seeing what each country's leader is i.e. a monarch, president. Then also if there is a female monarch, the system is multiparty, the house members (upper and lower). This mostly gives a good run down of each country in each year, and if there is a major regime change, and what regime it is.
+
+## How they cleaned the data
+
+-   First they cleaned the data by using a pacl update function, then used the janitor package, to then use the function clean_names(). They then used dplyr's select function, to select each variable and the column. Then they used the mutate function to create the election_month column, and used a seperate wider function to split the election month, and add election year. Continuing on they used another mutate function, and within this created election_category, and used the case_match function to assign each election system to a number (0-3). Then they used a final mutate function, to have election_month be equal to the stringr package str_squish function which took across all things that end in index, contains year, ends in members, or parliament_chambers and changing them to integers. Then a separate across function where it starts_with is\_, or has\_, and changes these to logical values.
+
+## Possible Research questions
+
+1.  How does a regime change effect free and fair elections? And does this have any effect on the country and or the system that it is under?
+
+2.  Does a postponed election signify a soon change to their whole political system?
+
+3.  How does a multiparty system differ comparatively toward a single party system in spatial democracy?
+
+## Possible Research questions (with supplemental data)
+
+1.  How has the data for regime changes in religious countries have changed over the years, and does this have to do with what continent the country is in?
+
+2.  How do single party systems determine if the election is fair and equal, especially those under monarch or religious rule (religious oligarchy), does this depend on the population of the people compared to those in government?
+
+3.  Does the more party system you have lead to a higher or lower regime change, and how does this have an impact on mortality rates?
+
+4.  Does the single party system have more or less gdp per capita compared to other governmental systems?
